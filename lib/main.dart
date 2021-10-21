@@ -103,7 +103,8 @@ class _secondPageState extends State<secondPage> {
       ),
       body: Container(
           width: MediaQuery.of(context).size.width,
-          color: Colors.blueGrey,
+          // color: Colors.blueGrey,
+          color: const Color(0xf4f4f4ff),
           child: Column(children: [
             InkWell(
                 onTap: () {
@@ -120,20 +121,20 @@ class _secondPageState extends State<secondPage> {
               onPressed: () => btnClick(),
               margin: const EdgeInsets.only(top: 20),
               style: const NeumorphicStyle(
-                  shape: NeumorphicShape.flat, color: Colors.blueGrey),
+                  shape: NeumorphicShape.flat, color: Color(0x5288ceff)),
               padding: const EdgeInsets.all(18.0),
               child: const Icon(
                 Icons.favorite_border,
                 color: Colors.black,
               ),
             ),
+            Text('正在输入： $_username'),
             const Padding(padding: EdgeInsets.only(bottom: 20)),
-            const NeumBtn()
+            NeumBtn(editParent: () => childClick(), username: _username)
           ])),
     );
   }
 
-  @override
   void btnClick() {
     setState(() {
       _username++;
@@ -141,6 +142,12 @@ class _secondPageState extends State<secondPage> {
 
     // ignore: avoid_print
     print(_username);
+  }
+
+  void childClick() {
+    setState(() {
+      _username--;
+    });
   }
 }
 
